@@ -1,0 +1,1 @@
+# django_HR_registry_control
