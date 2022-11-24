@@ -25,4 +25,16 @@ class Epis(models.Model):
 
     epi = models.CharField('EPI', max_length=6, choices=EPI_CHOICES, help_text='Escolha o tipo de EPI.')
     last_give = models.DateField('Data de entrega', max_length=9, help_text='Data da ultima entrega de EPI')
-    next_change = models.DateField('Data de troca', max_length=9, help_text='Data da próxima troca de EPI') 
+    next_change = models.DateField('Data de troca', max_length=9, help_text='Data da próxima troca de EPI')
+
+
+class Advantage(models.Model):
+
+    ADVANTAGE_CHOICES = (
+        ('saude', 'Plano de saúde'),
+        ('odontologico', 'Plano odontológico')
+    )
+
+    advantage = models.CharField('Benificio', max_length=12, help_text='Escolha o tipo de plano:')
+    user = models.CharField('Usuário', max_length=50, help_text='Escolha o usuário que irá utilizar o plano.')
+    value = models.DecimalField('Valor', help_text='Informe o valor do plano.')
