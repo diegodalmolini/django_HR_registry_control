@@ -38,3 +38,25 @@ class Advantage(models.Model):
     advantage = models.CharField('Benificio', max_length=12, help_text='Escolha o tipo de plano:')
     user = models.CharField('Usuário', max_length=50, help_text='Escolha o usuário que irá utilizar o plano.')
     value = models.DecimalField('Valor', help_text='Informe o valor do plano.')
+
+
+class Scholarity(models.Models):
+
+    DEGREE_CHOICES = (
+        ('en_fundamental', 'Ensino Fundamental'),
+        ('en_medio', 'Ensino Médio'),
+        ('en_superior', 'Ensino Superior'),
+        ('pos', 'Pós Graduação/Especialização'),
+        ('mestrado', 'Mestrado'),
+        ('Doutorado', 'Doutorado')
+    )
+
+    SITUATION_CHOICES = (
+        ('incompleto', 'Incompleto'),
+        ('completo', 'Completo'),
+        ('cursando', 'Cursando')
+    )
+    degree = models.CharField('Nível de Formação', max_length=14, choices=DEGREE_CHOICES , help_text='Escolha entre os tipos de niveis de formação.')
+    start_date = models.DateField('Data de ínicio', max_length=6, help_text='MM/AA')
+    conclusion_date = models.DateField('Data de conclusão', max_length=6, help_text='MM/AA')
+    situation = models.CharField('Situação', max_length=10, choices=SITUATION_CHOICES)
