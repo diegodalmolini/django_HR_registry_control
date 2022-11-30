@@ -156,7 +156,7 @@ class Trainings(models.Model):
         return self.name
 
 
-class People(models.Model):
+class Personal_data(models.Model):
     first_name = models.CharField('Nome', max_length=50)
     last_name = models.CharField('Sobrenome', max_length=50)
     rg = models.IntegerField('RG')
@@ -168,8 +168,8 @@ class People(models.Model):
     mother_name = models.CharField('Nome da mãe', max_length=50)
 
     class Meta:
-        verbose_name = 'Pessoa'
-        verbose_name_plural = 'Pessoas'
+        verbose_name = 'Dado pessoal'
+        verbose_name_plural = 'Dados pessoais'
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
@@ -197,7 +197,7 @@ class Employee(models.Model):
     ct_series = models.IntegerField('Série da carteira de trabalho')
     internal_code = models.IntegerField('Código interno')
     dependents = models.ForeignKey(Dependents, verbose_name='Dependentes', on_delete=models.CASCADE)
-    people = models.OneToOneField(People, verbose_name='Pessoas', on_delete=models.CASCADE)
+    personal_data = models.OneToOneField(Personal_data, verbose_name='Pessoas', on_delete=models.CASCADE)
     trainings = models.ForeignKey(Trainings, verbose_name='Treinamentos', on_delete=models.CASCADE)
     feedbacks = models.ForeignKey(Feedbacks, verbose_name='Feedbacks', on_delete=models.CASCADE)
     epis = models.ForeignKey(Epis, verbose_name='EPIs', on_delete=models.CASCADE)

@@ -8,7 +8,7 @@ from .models import (
     Dependents,
     Roles,
     Departments,
-    People,
+    Personal_data,
     Trainings,
     Employee
 )
@@ -21,6 +21,6 @@ admin.site.register(Scholarity)
 admin.site.register(Dependents)
 admin.site.register(Roles)
 admin.site.register(Departments)
-admin.site.register(People)
+admin.site.register(Personal_data)
 admin.site.register(Trainings)
 admin.site.register(Employee)
