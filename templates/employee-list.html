@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h3>Lista de funcionarios</h3>
+    <hr>
+    <div class="table-responsive"></div>
+        <table class="table table-striped">
+            <tr>
+                <th>Nome</th>
+                <th>Cargo</th>
+                <th>Setor</th>
+
+            </tr>
+
+            {% for funcionario in object_list %}
+            <tr>
+                <th>{{ funcionario.personal_data.first_name }} {{funcionario.personal_data.last_name}}</th>
+                <th>{{ funcionario.role }}</th>
+                <th>{{ funcionario.department }}</th>
+
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">Nenhum funcionario registrado</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+
+
+</div>
+            
+{% endblock content %}

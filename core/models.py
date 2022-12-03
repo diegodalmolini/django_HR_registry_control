@@ -187,7 +187,7 @@ class Employee(models.Model):
     role = models.ForeignKey(Roles, verbose_name='Cargo', on_delete=models.CASCADE)
     cbo = models.CharField('CBO', max_length=7, help_text='Informe o número do CBO.')
     department = models.ForeignKey(Departments, verbose_name='Setor', on_delete=models.CASCADE)
-    salary = models.FloatField('Salário')
+    salary = models.CharField('Salário', max_length=15)
     superior = models.CharField('Superior imediato', max_length=50)
     shift = models.CharField('Turno', max_length=8, choices=SHIFT_CHOICES)
     last_exam = models.DateField('Ultimo exame', max_length=9, help_text='Data do ultimo exame.')
@@ -196,17 +196,17 @@ class Employee(models.Model):
     ct_number = models.IntegerField('Número da carteira de trabalho')
     ct_series = models.IntegerField('Série da carteira de trabalho')
     internal_code = models.IntegerField('Código interno')
-    dependents = models.ForeignKey(Dependents, verbose_name='Dependentes', on_delete=models.CASCADE)
+    dependents = models.ManyToManyField(Dependents, verbose_name='Dependentes', null=True, blank=True)
     personal_data = models.OneToOneField(Personal_data, verbose_name='Pessoas', on_delete=models.CASCADE)
-    trainings = models.ForeignKey(Trainings, verbose_name='Treinamentos', on_delete=models.CASCADE)
-    feedbacks = models.ForeignKey(Feedbacks, verbose_name='Feedbacks', on_delete=models.CASCADE)
-    epis = models.ForeignKey(Epis, verbose_name='EPIs', on_delete=models.CASCADE)
-    benefits = models.ForeignKey(Benefits, verbose_name='Benifícios', on_delete=models.CASCADE)
-    scholarity = models.ForeignKey(Scholarity, verbose_name='Escolaridade', on_delete=models.CASCADE)
+    trainings = models.ManyToManyField(Trainings, verbose_name='Treinamentos', null=True, blank=True)
+    feedbacks = models.ManyToManyField(Feedbacks, verbose_name='Feedbacks', null=True, blank=True)
+    epis = models.ManyToManyField(Epis, verbose_name='EPIs', null=True, blank=True)
+    benefits = models.ManyToManyField(Benefits, verbose_name='Benifícios', null=True, blank=True)
+    scholarity = models.ManyToManyField(Scholarity, verbose_name='Escolaridade', null=True, blank=True)
 
     class Meta:
         verbose_name = 'Funcionario'
         verbose_name_plural = 'Funcionarios'
 
     def __str__(self):
-        return f'{self.people.first_name} {self.people.last_name} - Cargo: {self.role}'
+        return f'{self.personal_data.first_name} {self.personal_data.last_name} - Cargo: {self.role}'
