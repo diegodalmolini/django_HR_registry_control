@@ -17,7 +17,11 @@
 
             {% for funcionario in object_list %}
             <tr>
-                <th>{{ funcionario.personal_data.first_name }} {{funcionario.personal_data.last_name}}</th>
+                <th>
+                    <a href="{% url 'funcionario' funcionario.pk %}">
+                        {{ funcionario.personal_data.first_name }} {{funcionario.personal_data.last_name}}
+                    </a>
+                </th>
                 <th>{{ funcionario.role }}</th>
                 <th>{{ funcionario.department }}</th>
 
