@@ -166,6 +166,7 @@ class Personal_data(models.Model):
     phone = models.CharField('Telefone', max_length=15)
     father_name = models.CharField('Nome do pai', max_length=50)
     mother_name = models.CharField('Nome da mãe', max_length=50)
+    dependents = models.ManyToManyField(Dependents, verbose_name='Dependentes', blank=True)
 
     class Meta:
         verbose_name = 'Dado pessoal'
@@ -196,13 +197,12 @@ class Employee(models.Model):
     ct_number = models.IntegerField('Número da carteira de trabalho')
     ct_series = models.IntegerField('Série da carteira de trabalho')
     internal_code = models.IntegerField('Código interno')
-    dependents = models.ManyToManyField(Dependents, verbose_name='Dependentes', null=True, blank=True)
     personal_data = models.OneToOneField(Personal_data, verbose_name='Pessoas', on_delete=models.CASCADE)
-    trainings = models.ManyToManyField(Trainings, verbose_name='Treinamentos', null=True, blank=True)
-    feedbacks = models.ManyToManyField(Feedbacks, verbose_name='Feedbacks', null=True, blank=True)
-    epis = models.ManyToManyField(Epis, verbose_name='EPIs', null=True, blank=True)
-    benefits = models.ManyToManyField(Benefits, verbose_name='Benifícios', null=True, blank=True)
-    scholarity = models.ManyToManyField(Scholarity, verbose_name='Escolaridade', null=True, blank=True)
+    trainings = models.ManyToManyField(Trainings, verbose_name='Treinamentos', blank=True)
+    feedbacks = models.ManyToManyField(Feedbacks, verbose_name='Feedbacks', blank=True)
+    epis = models.ManyToManyField(Epis, verbose_name='EPIs', blank=True)
+    benefits = models.ManyToManyField(Benefits, verbose_name='Benifícios', blank=True)
+    scholarity = models.ManyToManyField(Scholarity, verbose_name='Escolaridade', blank=True)
 
     class Meta:
         verbose_name = 'Funcionario'

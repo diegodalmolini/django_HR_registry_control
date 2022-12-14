@@ -1,0 +1,290 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<body>
+    <!-- CONTENT START -->
+    <div class="page-content">
+
+        <!-- INNER PAGE BANNER -->
+        <div class="wt-bnr-inr overlay-wraper bg-center" style="background-image:url('/static/images/banner/top-page-bg.jpg');">
+            <div class="overlay-main site-bg-white opacity-01"></div>
+            <div class="container">
+                <div class="wt-bnr-inr-entry">
+                    <div class="banner-title-outer">
+                        <div class="banner-title-name">
+                            <h2 class="wt-title">Perfil do {{employee.personal_data.first_name}} {{employee.personal_data.last_name}}</h2>
+                        </div>
+                    </div>
+                    <!-- BREADCRUMB ROW -->                            
+ 
+                    <!-- BREADCRUMB ROW END -->                        
+                </div>
+            </div>
+        </div>
+        <!-- INNER PAGE BANNER END -->
+
+        <p></p>
+
+        <!-- OUR BLOG START -->
+        <div class="section-full  p-t120 p-b90 bg-white">
+            <div class="container">
+            
+                <!-- BLOG SECTION START -->
+                <div class="section-content">
+                    <div class="row d-flex justify-content-center">
+                    
+                        <div class="col-lg-8 col-md-12">
+                            <!-- Candidate detail START -->
+                            <div class="cabdidate-de-info">
+                                <div class="twm-candi-self-wrap overlay-wraper" style="background-image:url('/static/images/candidates/candidate-detail-bg.jpg');">
+                                    <div class="overlay-main site-bg-primary opacity-01"></div>
+                                    <div class="twm-candi-self-info">
+                                                           
+                        <div>
+                            <ul class="wt-breadcrumb breadcrumb-style-2">
+                                <li>Informação pessoal</li>
+                            </ul>
+                            <div>
+                                Nome = {{ employee.personal_data.first_name}} {{employee.personal_data.last_name}}                      
+                            </div>
+                            <div>
+                                RG = {{ employee.personal_data.rg}}
+                            </div>
+                            <div>
+                                CPF = {{ employee.personal_data.cpf}}
+                            </div>
+                            <div>
+                                Data de nascimento = {{ employee.personal_data.birthday }}
+                            </div>
+                            <div>
+                                Endereço = {{ employee.personal_data.adress }}
+                            </div>
+                            <div>
+                                Telefone = {{ employee.personal_data.phone }}
+                            </div>
+                            <div>
+                                Pai = {{ employee.personal_data.father_name }}
+                            </div>
+                            <div>
+                                Mãe = {{ employee.personal_data.mother_name }}
+                            </div>
+                        </div>
+                        <p></p>
+                        <div>
+                            <ul class="wt-breadcrumb breadcrumb-style-2">
+                                <li>Dependentes</li>
+                            </ul>
+                            {% for dep in employee.personal_data.dependents.all %}
+                                <div>
+                                name = {{ dep.first_name }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <p></p>
+                        <div>
+                            <ul class="wt-breadcrumb breadcrumb-style-2">
+                                <li>Escolaridade</li>
+                            </ul>
+                            {% for dep in employee.scholarity.all %}
+                                <div>{{ dep.degree }}</div>
+                                <div>{{ dep.start_date }}</div>
+                                <div>{{ dep.conclusion_date }}</div>
+                                <div>{{ dep.situation }}</div>
+                            {% endfor %}
+                        </div>
+                    
+                                        <div class="twm-candi-self-top" style="color: black;">
+                                            <div class="twm-candi-fee"style="color: black;">R${{ curriculo.salario }} / Mês</div>
+                                            <div class="twm-mid-content">
+                                                
+                                                <p>{{ curriculo.categoria }}</p>
+                                                <p class="twm-candidate-address"><i class="feather-map-pin"></i>Blumenau, SC </p>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="twm-candi-self-bottom">
+                                            <a href="javascript:;" class="site-button outline-white" style="color: black;">Like</a>
+                                            <a href="#" class="site-button secondry">Baixar CV</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h4 class="twm-s-title">Sobre mim</h4>
+
+                                <p>{{curriculo.descricao}}</p>
+
+
+                                <h4 class="twm-s-title">Habilidades</h4>
+
+                                <div class="tw-sidebar-tags-wrap">
+                                    <div class="tagcloud">
+                                        {% if curriculo.pri_habilidade_candidato %}
+                                        <a href="javascript:void(0)">{{ curriculo.pri_habilidade_candidato }}</a>
+                                        {% endif %}
+                                        {% if curriculo.seg_habilidade_candidato %}
+                                        <a href="javascript:void(0)">{{ curriculo.seg_habilidade_candidato }}</a>
+                                        {% endif %}
+                                        {% if curriculo.ter_habilidade_candidato %}
+                                        <a href="javascript:void(0)">{{ curriculo.ter_habilidade_candidato }}</a>
+                                        {% endif %}
+                                        {% if curriculo.qua_habilidade_candidato %}
+                                        <a href="javascript:void(0)">{{ curriculo.qua_habilidade_candidato }}</a>
+                                        {% endif %}
+                                        {% if curriculo.qui_habilidade_candidato %}
+                                        <a href="javascript:void(0)">{{ curriculo.qui_habilidade_candidato }}</a>
+                                        {% endif %}                                          
+                                    </div>
+                                </div>
+
+                            </div>
+                                                        
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-12 rightSidebar">
+
+                            <div class="side-bar-2">
+                                
+                                    <h4 class="section-head-small mb-4">Informações do Funcionário</h4> 
+                                    <div class="twm-s-info3">
+                                        <ul>
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    <i class="fas fa-money-bill-wave"></i>
+                                                    <span class="twm-title">Admissão</span>
+                                                    <div class="twm-s-info-discription">{{ employee.admission }}</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    <i class="fas fa-money-bill-wave"></i>
+                                                    <span class="twm-title">CBO</span>
+                                                    <div class="twm-s-info-discription">{{ employee.cbo }}</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    <i class="fas fa-money-bill-wave"></i>
+                                                    <span class="twm-title">Departamento</span>
+                                                    <div class="twm-s-info-discription">{{ employee.department }}</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    <i class="fas fa-money-bill-wave"></i>
+                                                    <span class="twm-title">Turno</span>
+                                                    <div class="twm-s-info-discription">{{ employee.shift }}</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    <i class="fas fa-money-bill-wave"></i>
+                                                    <span class="twm-title">Ultimo exame</span>
+                                                    <div class="twm-s-info-discription">{{ employee.last_exam }}</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    <i class="fas fa-money-bill-wave"></i>
+                                                    <span class="twm-title">Próximo exame</span>
+                                                    <div class="twm-s-info-discription">{{ employee.next_exam }}</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    <i class="fas fa-money-bill-wave"></i>
+                                                    <span class="twm-title">PIS</span>
+                                                    <div class="twm-s-info-discription">{{ employee.pis }}</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    <i class="fas fa-money-bill-wave"></i>
+                                                    <span class="twm-title">Número da carteira de trabalho</span>
+                                                    <div class="twm-s-info-discription">{{ employee.ct_number }}</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    <i class="fas fa-money-bill-wave"></i>
+                                                    <span class="twm-title">Série da carteira de trabalho</span>
+                                                    <div class="twm-s-info-discription">{{ employee.ct_series }}</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    <i class="fas fa-money-bill-wave"></i>
+                                                    <span class="twm-title">Código interno</span>
+                                                    <div class="twm-s-info-discription">{{ employee.internal_code8 }}</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    <i class="fas fa-money-bill-wave"></i>
+                                                    <span class="twm-title">Salário</span>
+                                                    <div class="twm-s-info-discription">{{ employee.salary }} / Mês</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    <i class="fas fa-clock"></i>
+                                                    <span class="twm-title">Cargo</span>
+                                                    <div class="twm-s-info-discription">{{ employee.role }}</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    <i class="fas fa-venus-mars"></i>
+                                                    <span class="twm-title">Superior Imediato</span>
+                                                    <div class="twm-s-info-discription">{{ employee.superior }}</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    <i class="fas fa-mobile-alt"></i>
+                                                    <span class="twm-title">Celular</span>
+                                                    <div class="twm-s-info-discription">{{employee.personal_data.phone}}</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    <i class="fas fa-at"></i>
+                                                    <span class="twm-title">Email</span>
+                                                    <div class="twm-s-info-discription">algumemail@gmail.com</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    <i class="fas fa-book-reader"></i>
+                                                    <span class="twm-title">Qualificação</span>
+                                                    <div class="twm-s-info-discription">{{ curriculo.categoria }}</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    
+                                                    <i class="fas fa-map-marker-alt"></i>
+                                                    <span class="twm-title">Endereço</span>
+                                                    <div class="twm-s-info-discription">1363-1385 Sunset Blvd Angeles, CA 90026 ,USA</div>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+                                        
+                                    </div>
+                            </div>
+                            
+                        </div>
+                    
+                    </div>
+                                            
+                </div>
+                
+            </div>
+            
+        </div>     
+    
+    </div>
+
+
+            
+{% endblock content %}
